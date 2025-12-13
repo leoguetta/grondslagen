@@ -1,0 +1,178 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+
+\usepackage[
+  a4paper,
+  left=1.5cm,
+  right=1.5cm,
+  top=1cm,
+  bottom=2cm
+  ]{geometry}
+  
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{enumitem}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{Midterm Exam: Grondslagen van de Wiskunde}
+\date{December 16, 2025, 09:00-12:00}
+
+\begin{document}
+\maketitle
+
+\noindent \textsc{This exam consists of 5 exercises; see also the
+  back side.}
+
+\noindent Every exercise is worth 10 points; your grade is the total
+divided by 5. If an exercise contains several questions, the number of
+points attributed to each question is indicated.
+
+\noindent As the exam is \textbf{closed book}, some basics definition
+about posets, which you may use freely, are recalled below.
+
+\noindent Advice: start first with the exercises that you can do, and
+then think about the rest. Succes!
+
+\medskip
+
+\hrule
+
+\medskip
+
+\noindent\textit{A few definitions about posets:} Recall that a poset is a pair
+$(X,\leq)$ of a set $X$ and a binary relation $\leq$ such that:
+\begin{itemize}
+\item (reflexivity) $x\leq x$ for any $x\in X$
+\item (anti-symmetry) $x\leq y$ and $y \leq x$ imply $x = y$ for any
+  $x,y \in X$, 
+\item (transitivity) $x\leq y$ and $y \leq z$ imply $x\leq z$, for any
+  $x,y,z \in X$.
+\end{itemize}
+ We say furthermore that the order is \emph{linear} or \emph{total} if
+for any $x,y \in X$, we have $x \leq y$ or $y \leq x$.
+
+\noindent We will often only refer to a poset as $X$ instead of
+$(X,\leq)$.
+
+\noindent A poset is \emph{well-ordered} if every non-empty subset has
+a least element.
+
+\noindent A function $f \colon L \to M$ between well-ordered sets is
+an \emph{embedding} if it is strictly increasing (see Exercise 1) and
+for any $x \in L$ and any $y\in M$ such that $y \leq f(x)$, there
+exists $x' \leq x$ with $f(x')=y$.
+
+\medskip
+
+\hrule
+
+\medskip 
+
+\medskip
+
+\noindent\textbf{Exercise 1.} 
+
+  \begin{enumerate}
+  \item (2 points) Let $P$ and $Q$ be posets and $f \colon P \to Q$ a
+    function. Prove that if $P$ is totally ordered, then the following
+    assertions are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+    \item $f$ is order-preserving (if $x \leq y$ then $f(x)\leq f(y)$)
+      and injective,
+    \item $f$ is strictly increasing: if $x<y$ then $f(x)<f(y)$,
+    \item $f$ satisfies the condition: $x<y$ if and only if $f(x)<f(y)$.
+    \end{enumerate}
+  \item (4 points) Let $L$ and $M$ two well-ordered sets, $f \colon L \to M$ an
+    embedding and $g \colon L \to M$ a strictly increasing
+    function. Prove that for every $x \in L$, we have
+    \[
+      f(x)\leq g(x).
+    \]
+  \item (4 points) Let $L$ and $M$ be two well-ordered sets, prove that there
+    exist an embedding $L \to M$ if and only if there exist a strictly
+    increasing function $L \to M$.
+  \end{enumerate}
+
+  \medskip
+
+  
+\noindent\textbf{Exercise 2.} A \emph{tree} is a poset $(T,\leq)$ such
+that:
+\begin{enumerate}[label=(\roman*)]
+\item it has a least element, called the \emph{root},
+\item for every
+  $x \in T$, the set $\{y \in T\,\vert\, y \leq x\}$ is well-ordered.
+\end{enumerate}
+Given an element $x \in T$, an \emph{immediate successor} of $T$ is an
+element $y$ such that $x < y$ and there is no $z$ such that $x < z <
+y$.
+% \begin{enumerate}
+% \item Consider 
+% \end{enumerate}
+We say that a tree is \emph{infinite} if the underlying set is
+infinite, and we say that it is \emph{locally finite} if for every
+element $x \in T$, the set of immediate successor of $x$ is finite.
+\begin{enumerate}
+\item (3 points) Let $(T,\leq)$ be an infinite tree which is locally
+  finite. Prove that there is an immediate successor $x$ of the root
+  such that the set $\{y \in T\,\vert\, y \geq x\}$ is infinite.
+\item (7 points) Prove the famous K\H{o}nig's lemma: For every infinite and locally
+  finite tree, there exists an infinite strictly increasing
+  sequence
+  \[
+    x_0 < x_1 < x_2 < \dots.
+  \]
+  (Hint: one form or another of the axiom of choice has to be used.)
+\end{enumerate}
+\noindent\textbf{Exercise 3.} Consider the language $L=\{f\}$, with $f$
+is a unary function symbol, and the $L$-structure $R$, whose
+underlying set is $\R$, and $f^R(x)=x^2$.
+\begin{enumerate}
+\item (5 points) Using $L$-formulas, define in $R$ the
+  numbers $-1, 0$ and $1$.
+\item (5 points) Find an $L$-formula $\phi(x)$ such that the subset of $x \in
+  R$ that satisfies $\phi(x)$ is the subset $\{x \in \R \,\vert\, x> 0\}$.
+\end{enumerate}
+
+\medskip
+
+\noindent\textbf{Exercise 4.} For each of the following set,
+determine if they are finite, infinite countable or
+uncountable. Justify your answers.
+\[
+  \begin{aligned}
+   \text{(4 points)}\quad A&=\{f \colon \N \to \N \,\vert\, f(n)=f(n+1)+f(n+2)\}\\
+    \text{(3 points)}\quad B&=\{f \colon \N \to \N \,\vert\, f(n)^2-3f(n)+2=0\}\\
+    \text{(3 points)}\quad C&=\{f \colon \N \to \N \,\vert\, f(n)\geq f(n+1)\}
+  \end{aligned}
+\]
+
+\medskip
+
+\noindent\textbf{Exercise 5.} Let $(X,\leq)$ be a poset. The goal of
+the exercise is to prove that there always exists a linear order $\preceq$ on
+$X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
+\begin{enumerate}
+\item (4 points) Prove the statement in the case that $X$ is finite.
+\item (6 points) Prove the general case using the compactness theorem.
+\end{enumerate}
+% \noindent\textbf{Exercise 5.} We consider the language $L_{\R}$ of
+% $\R$-vector spaces: it has one constant $0$, a binary function symbol $+$ for
+% the addition of vectors, and for each $r\in \R$, a unary function symbol
+% $f_r$ for the multiplication of a vector with the scalar $r$. We
+% consider also the theory $T_{\R}$ of $\R$-vector spaces, given by the
+% axioms
+% \[
+  
+% \]
+% Prove with the help of the compactness theorem that there is no
+% $L_{\R}$-formula $\phi(x,y)$ with two free varibales $x$ and $y$, that
+% expresses that $x$ and $y$ are linearly independant (problem)
+\end{document}
