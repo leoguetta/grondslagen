@@ -55,7 +55,7 @@ $(X,\leq)$ of a set $X$ and a binary relation $\leq$ such that:
 \item (transitivity) $x\leq y$ and $y \leq z$ imply $x\leq z$, for any
   $x,y,z \in X$.
 \end{itemize}
- We say furthermore that the order is \emph{linear} or \emph{total} if
+ We say furthermore that the order is \emph{linear} (or \emph{total}) if
 for any $x,y \in X$, we have $x \leq y$ or $y \leq x$.
 
 \noindent We will often only refer to a poset as $X$ instead of
@@ -81,7 +81,7 @@ exists $x' \leq x$ with $f(x')=y$.
 
   \begin{enumerate}
   \item (2 points) Let $P$ and $Q$ be posets and $f \colon P \to Q$ a
-    function. Prove that if $P$ is totally ordered, then the following
+    function. Prove that if $P$ is linearly ordered, then the following
     assertions are equivalent:
     \begin{enumerate}[label=(\alph*)]
     \item $f$ is order-preserving (if $x \leq y$ then $f(x)\leq f(y)$)
@@ -113,30 +113,30 @@ that:
 Given an element $x \in T$, an \emph{immediate successor} of $T$ is an
 element $y$ such that $x < y$ and there is no $z$ such that $x < z <
 y$.
-% \begin{enumerate}
-% \item Consider 
-% \end{enumerate}
 We say that a tree is \emph{infinite} if the underlying set is
 infinite, and we say that it is \emph{locally finite} if for every
-element $x \in T$, the set of immediate successor of $x$ is finite.
+element $x \in T$, the set of immediate successors of $x$ is finite.
 \begin{enumerate}
 \item (3 points) Let $(T,\leq)$ be an infinite tree which is locally
-  finite. Prove that there is an immediate successor $x$ of the root
-  such that the set $\{y \in T\,\vert\, y \geq x\}$ is infinite.
+  finite. Prove that if $x$ is an element such that the set  $\{y \in
+  T\,\vert\, y \geq x\}$ is infinite, then there is an immediate
+  successor of $x$ having the same property.
 \item (7 points) Prove the famous K\H{o}nig's lemma: For every infinite and locally
   finite tree, there exists an infinite strictly increasing
   sequence
   \[
     x_0 < x_1 < x_2 < \dots.
   \]
-  (Hint: one form or another of the axiom of choice has to be used.)
+  You have to make explicit where you use the axiom of choice in your answer.
 \end{enumerate}
 \noindent\textbf{Exercise 3.} Consider the language $L=\{f\}$, with $f$
 is a unary function symbol, and the $L$-structure $R$, whose
 underlying set is $\R$, and $f^R(x)=x^2$.
 \begin{enumerate}
 \item (5 points) Using $L$-formulas, define in $R$ the
-  numbers $-1, 0$ and $1$.
+  numbers $-1, 0$ and $1$. That is, give an $L$-formula with one free
+  variable such that the set of elements of $R$ for which the formula
+  holds is $\{-1\}$ (resp.\ $\{0\}$, resp.\ $\{1\}$). 
 \item (5 points) Find an $L$-formula $\phi(x)$ such that the subset of $x \in
   R$ that satisfies $\phi(x)$ is the subset $\{x \in \R \,\vert\, x> 0\}$.
 \end{enumerate}
@@ -176,3 +176,8 @@ $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
 % $L_{\R}$-formula $\phi(x,y)$ with two free varibales $x$ and $y$, that
 % expresses that $x$ and $y$ are linearly independant (problem)
 \end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
