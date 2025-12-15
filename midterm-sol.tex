@@ -1,0 +1,283 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+
+\usepackage[
+  a4paper,
+  left=1.5cm,
+  right=1.5cm,
+  top=1cm,
+  bottom=2cm
+  ]{geometry}
+  
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{enumitem}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{Midterm Exam: Grondslagen van de Wiskunde}
+\date{December 16, 2025, 09:00-12:00}
+
+\begin{document}
+\maketitle
+
+\noindent \textsc{This exam consists of 5 exercises; see also the
+  back side.}
+
+\noindent Every exercise is worth 10 points; your grade is the total
+divided by 5. If an exercise contains several questions, the number of
+points attributed to each question is indicated.
+
+\noindent As the exam is \textbf{closed book}, some basics definition
+about posets, which you may use freely, are recalled below.
+
+\noindent Advice: start first with the exercises that you can do, and
+then think about the rest. Succes!
+
+\medskip
+
+\hrule
+
+\medskip
+
+\noindent\textit{A few definitions about posets:} Recall that a poset is a pair
+$(X,\leq)$ of a set $X$ and a binary relation $\leq$ such that:
+\begin{itemize}
+\item (reflexivity) $x\leq x$ for any $x\in X$
+\item (anti-symmetry) $x\leq y$ and $y \leq x$ imply $x = y$ for any
+  $x,y \in X$, 
+\item (transitivity) $x\leq y$ and $y \leq z$ imply $x\leq z$, for any
+  $x,y,z \in X$.
+\end{itemize}
+ We say furthermore that the order is \emph{linear} (or \emph{total}) if
+for any $x,y \in X$, we have $x \leq y$ or $y \leq x$.
+
+\noindent We will often only refer to a poset as $X$ instead of
+$(X,\leq)$.
+
+\noindent A poset is \emph{well-ordered} if every non-empty subset has
+a least element.
+
+\noindent A function $f \colon L \to M$ between well-ordered sets is
+an \emph{embedding} if it is strictly increasing (see Exercise 1) and
+for any $x \in L$ and any $y\in M$ such that $y \leq f(x)$, there
+exists $x' \leq x$ with $f(x')=y$.
+
+\medskip
+
+\hrule
+
+\medskip 
+
+\medskip
+
+\noindent\textbf{Exercise 1.} 
+
+  \begin{enumerate}
+  \item (2 points) Let $P$ and $Q$ be posets and $f \colon P \to Q$ a
+    function. Prove that if $P$ is linearly ordered, then the following
+    assertions are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+    \item $f$ is order-preserving (if $x \leq y$ then $f(x)\leq f(y)$)
+      and injective,
+    \item $f$ is strictly increasing: if $x<y$ then $f(x)<f(y)$,
+    \item $f$ satisfies the condition: $x<y$ if and only if $f(x)<f(y)$.
+    \end{enumerate}
+  \item (4 points) Let $L$ and $M$ two well-ordered sets, $f \colon L \to M$ an
+    embedding and $g \colon L \to M$ a strictly increasing
+    function. Prove that for every $x \in L$, we have
+    \[
+      f(x)\leq g(x).
+    \]
+  \item (4 points) Let $L$ and $M$ be two well-ordered sets, prove that there
+    exist an embedding $L \to M$ if and only if there exist a strictly
+    increasing function $L \to M$.
+  \end{enumerate}
+
+  \medskip
+  \noindent\textbf{Solution}
+  \begin{enumerate}
+  \item $(a) \Rightarrow (b)$: Suppose that $f$ is order-preserving and
+  injective, and let $x<y$. Since $f$ is injective, $f(x)\neq f(y)$,
+  hence $f(x)<f(y)$.
+
+  $(b)\Rightarrow (a)$ Suppose that $f$ is strictly
+  increasing. Clearly $f$ is order-preserving, hence we have to prove
+  that $f$ is injective. Let $x,y \in X$ such that $f(x)=f(y)$. Since
+  $X$ is linearly ordered, we either have $x>y$ or $x>y$ or
+  $x=y$. Using that $f$ is strictly increasing, we see that the only
+  possibility is $x=y$.
+  
+  $(b)\Rightarrow (c)$: Suppose that $f$ is strictly increasing and
+  let $x,y \in X$ such that $f(x)<f(y)$. Suppose by contradiction that
+  $x \nless y$. Because $X$ is linearly ordered, this means that necessarily $x
+  \geq y$. Using that $f$ is increasing, this implies that
+  $f(x)\geq f(y)$ which is a contradiction. Hence, we have $x<y$.
+
+  $(c)\Rightarrow (b)$ trivial.
+  \item Let $A \subseteq L$ be the set of those $x$ such that
+    $f(x)\leq g(x)$. Since $f$ is an embedding, we have $f(0)=0$,
+    hence $0 \in A$. Now let $x\neq 0 \in L$ such that $L_{<x} \subseteq A$,
+    there are two cases:
+    \begin{itemize}
+      \item if $x$ is a successor, $x=y+1$. Because $g$ is strictly
+        increasing, we have $g(y)<g(x)$, and because $f$ is an
+        embedding, we have $f(x)=f(y)+1$. By hypothesis, $y \in A$,
+        hence $f(y)\leq g(y)$. This implies that $f(y)<g(x)$, hence
+        \[
+          f(x)=f(y)+1\leq g(x).
+        \]
+      \item if $x$ is limit, then $x=\sup\{y < x\}$. Because $g$ is
+        strictly increasing, we have $g(y)<g(x)$ for all $y<x$. In
+        particular, $\sup\{g(y)\,\vert\,y<x\}\leq g(x)$. Now because $f$
+        is an embedding, we have $f(x)=\sup\{f(y)\,\vert\,y<x\}$,
+        hence
+        \[
+          f(x)=\sup\{f(y)\,\vert\,y<x\}\leq \sup\{g(y)\,\vert\,y<x\}\leq g(x).
+        \]
+      \end{itemize}
+    \item The ``only if'' part is trivial, since, by definition, an
+      embedding is strictly increasing. Let us prove the ``if''
+      part. Let $g \colon L \to M$ be a strictly increasing
+      function. We are going to define an embedding $f \colon L \to M$
+      be transfinite recursion. We set $f(0)=0$. Now, let $x \in L$
+      such that we have define an embedding $f\vert_{L_{<x}} \colon
+      L_{<x} \ to M$, we need to give a rule to define $f(x)$. There
+      are two cases:
+      \begin{itemize}
+        \item $x$ is a successor, $x=y+1$, then we have to define
+          $f(x)=f(y)+1$, but to do that we need to be sure that $f(x)$
+          is not a greatest element (and thus that the successor of
+          $f(x)$ does exist). Applying question 2 of the exercise with
+          $L_{<x}$ in place of $L$, we have
+          that $f(y)\leq g(y)$, and because $g$ is strictly
+          increasing, we have $g(y)<g(x)$, which proves that $f(y)$ is
+          not a greatest element. 
+        \item $x$ is limit, then $x=\sup\{y < x\}$, then we have to
+          define $f(x)=\sup\{f(y)\,\vert\,y<x\}$, but to do that we
+          need to be sure that this supremum exist, hence we need to
+          show that the set $\{f(y)\,\vert\,y<x\}$ has an upper bound. Applying question 2 of the exercise with
+          $L_{<x}$ in place of $L$, we have
+          that $f(y)\leq g(y)$, for every $y<x$. Since, $g$ is
+          strictly increasing, $g(x)$ is an upper bound of the set
+          $\{g(y)\,\vert\,y<x\}$ and thus of the set $\{f(y)\,\vert\,y<x\}$.
+      \end{itemize}
+      It is immediate to check that the function $f$ such defined is
+      an embedding.
+    \end{enumerate}
+    
+  \medskip
+  
+\noindent\textbf{Exercise 2.} A \emph{tree} is a poset $(T,\leq)$ such
+that:
+\begin{enumerate}[label=(\roman*)]
+\item it has a least element, called the \emph{root},
+\item for every
+  $x \in T$, the set $\{y \in T\,\vert\, y \leq x\}$ is well-ordered.
+\end{enumerate}
+Given an element $x \in T$, an \emph{immediate successor} of $x$ is an
+element $y$ such that $x < y$ and there is no $z$ such that $x < z <
+y$.
+We say that a tree is \emph{infinite} if the underlying set is
+infinite, and we say that it is \emph{locally finite} if for every
+element $x \in T$, the set of immediate successors of $x$ is finite.
+\begin{enumerate}
+\item (3 points) Let $(T,\leq)$ be an infinite tree which is locally
+  finite. Prove that if $x$ is an element such that the set  $\{y \in
+  T\,\vert\, y \geq x\}$ is infinite, then there is an immediate
+  successor of $x$ having the same property.
+\item (7 points) Prove the famous K\H{o}nig's lemma: For every infinite and locally
+  finite tree, there exists an infinite strictly increasing
+  sequence
+  \[
+    x_0 < x_1 < x_2 < \dots.
+  \]
+  You have to make explicit where you use the axiom of choice in your answer.
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Solution}
+
+\begin{enumerate}
+\item Let us first prove the following fact: if $x<y$, then $x'\leq y$
+  for some $x'$, immediate successor of $x$. For that, it suffices to
+  notice that the set $\{z \leq y \,\vert\, z \in T\}$ is well-ordered
+  by definition, hence, because $x$ is in that set and is not a greatest
+  element, it has a successor $x+1$ in that set. It is then trivial to
+  check that this element is an immediate successor of $x$ in $T$.
+
+  From this fact it follows that for any $x \in T$, we have
+  \[
+    \{y \geq x \,\vert\, y \in T\} = \{x\} \cup \bigcup_{x'\in \mathrm{Succ}(x)}\{y \geq
+    x' \,\vert\, y \in T\}.     
+  \]
+  Where $\mathrm{Succ}(x)$ is the set of all the immediate successors of
+  $x$. By hypothesis, there are only a finite number of these, and
+  since a finite union of finite sets is finite, if $ \{y \geq x
+  \,\vert\, y \in T\}$ is infinite, then necessarily one of
+  the set $\{y \geq
+  x' \,\vert\, y \in T\}$ has to be infinite.
+  \item We define $x_0$ to be the root, and if the sequence has be
+    defined up to $x_n$ for some $n \in \N$, we define $x_{n+1}$ to
+    be any of its immediate successor whose sets of greater elements
+    is infinite. The existence of such an immediate successor follows
+    from   
+\end{enumerate}
+\medskip
+
+\noindent\textbf{Exercise 3.} Let $X$ be an infinite set and let $A
+\subseteq X^X$ an \emph{infinite} set of functions $X \to X$. Let
+$\overline{A}$ be the smallest subset of $X^X$ such that: $A \subseteq
+\overline{A}$ and $\overline{A}$ is closed under composition, i.e. if
+$f,g \in \overline{A}$, then $f\circ g \in \overline{A}$.
+
+Show that $\vert \overline{A} \vert = \vert A \vert$.
+
+\medskip
+
+\noindent\textbf{Exercise 4.} Consider the language $L=\{f\}$, with $f$
+is a unary function symbol, and the $L$-structure $R$, whose
+underlying set is $\R$, and $f^R(x)=x^2$.
+\begin{enumerate}
+\item (5 points) Using $L$-formulas, define in $R$ the
+  numbers $-1, 0$ and $1$. That is, give $L$-formulas with one free
+  variable such that the set of elements of $R$ for which the formula
+  holds is $\{-1\}$ (resp.\ $\{0\}$, resp.\ $\{1\}$). 
+\item (5 points) Find an $L$-formula $\phi(x)$ such that the subset of $x \in
+  R$ that satisfies $\phi(x)$ is the subset $\{x \in \R \,\vert\, x> 0\}$.
+\end{enumerate}
+
+% \noindent\textbf{Exercise 4.} For each of the following set,
+% determine if they are finite, infinite countable or
+% uncountable. Justify your answers.
+% \[
+%   \begin{aligned}
+%    \text{(4 points)}\quad A&=\{f \colon \N \to \N \,\vert\, f(n)=f(n+1)+f(n+2)\}\\
+%     \text{(3 points)}\quad B&=\{f \colon \N \to \N \,\vert\, f(n)^2-3f(n)+2=0\}\\
+%     \text{(3 points)}\quad C&=\{f \colon \N \to \N \,\vert\, f(n)\geq f(n+1)\}
+                                %   \end{aligned}
+                                %                                 \]
+
+
+\medskip
+
+\noindent\textbf{Exercise 5.} Let $(X,\leq)$ be a poset. The goal of
+the exercise is to prove that there always exists a linear order $\preceq$ on
+$X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
+\begin{enumerate}
+\item (4 points) Prove the statement in the case that $X$ is finite.
+\item (6 points) Prove the general case using the compactness theorem.
+\end{enumerate}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
