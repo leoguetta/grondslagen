@@ -34,7 +34,7 @@
 divided by 5. If an exercise contains several questions, the number of
 points attributed to each question is indicated.
 
-\noindent As the exam is \textbf{closed book}, some basics definition
+\noindent As the exam is \textbf{closed book}, some basic definitions
 about posets, which you may use freely, are recalled below.
 
 \noindent Advice: start first with the exercises that you can do, and
@@ -96,7 +96,7 @@ exists $x' \leq x$ with $f(x')=y$.
       f(x)\leq g(x).
     \]
   \item (4 points) Let $L$ and $M$ be two well-ordered sets, prove that there
-    exist an embedding $L \to M$ if and only if there exist a strictly
+    exists an embedding $L \to M$ if and only if there exist a strictly
     increasing function $L \to M$.
   \end{enumerate}
 
@@ -104,19 +104,20 @@ exists $x' \leq x$ with $f(x')=y$.
   \noindent\textbf{Solution}
   \begin{enumerate}
   \item $(a) \Rightarrow (b)$: Suppose that $f$ is order-preserving and
-  injective, and let $x<y$. Since $f$ is injective, $f(x)\neq f(y)$,
+  injective, and let $x<y$. Since $f$ is order preserving we have
+  $f(x)\leq f(y)$, but since $f$ is injective we have $f(x)\neq f(y)$,
   hence $f(x)<f(y)$.
 
   $(b)\Rightarrow (a)$ Suppose that $f$ is strictly
   increasing. Clearly $f$ is order-preserving, hence we have to prove
-  that $f$ is injective. Let $x,y \in X$ such that $f(x)=f(y)$. Since
-  $X$ is linearly ordered, we either have $x>y$ or $x>y$ or
+  that $f$ is injective. Let $x,y \in P$ such that $f(x)=f(y)$. Since
+  $P$ is linearly ordered, we either have $x>y$ or $x<y$ or
   $x=y$. Using that $f$ is strictly increasing, we see that the only
   possibility is $x=y$.
   
   $(b)\Rightarrow (c)$: Suppose that $f$ is strictly increasing and
-  let $x,y \in X$ such that $f(x)<f(y)$. Suppose by contradiction that
-  $x \nless y$. Because $X$ is linearly ordered, this means that necessarily $x
+  let $x,y \in P$ such that $f(x)<f(y)$. Suppose by contradiction that
+  $x \nless y$. Because $P$ is linearly ordered, this means that necessarily $x
   \geq y$. Using that $f$ is increasing, this implies that
   $f(x)\geq f(y)$ which is a contradiction. Hence, we have $x<y$.
 
@@ -127,11 +128,11 @@ exists $x' \leq x$ with $f(x')=y$.
     there are two cases:
     \begin{itemize}
       \item if $x$ is a successor, $x=y+1$. Because $g$ is strictly
-        increasing, we have $g(y)<g(x)$, and because $f$ is an
+        increasing, we have $g(y)<g(x)$, hence $g(y)+1\leq g(x)$. Because $f$ is an
         embedding, we have $f(x)=f(y)+1$. By hypothesis, $y \in A$,
-        hence $f(y)\leq g(y)$. This implies that $f(y)<g(x)$, hence
+        hence $f(y)\leq g(y)$. All in all, we have
         \[
-          f(x)=f(y)+1\leq g(x).
+          f(x)=f(y)+1\leq g(y)+1 \leq g(x).
         \]
       \item if $x$ is limit, then $x=\sup\{y < x\}$. Because $g$ is
         strictly increasing, we have $g(y)<g(x)$ for all $y<x$. In
@@ -139,16 +140,19 @@ exists $x' \leq x$ with $f(x')=y$.
         is an embedding, we have $f(x)=\sup\{f(y)\,\vert\,y<x\}$,
         hence
         \[
-          f(x)=\sup\{f(y)\,\vert\,y<x\}\leq \sup\{g(y)\,\vert\,y<x\}\leq g(x).
+          f(x)=\sup\{f(y)\,\vert\,y<x\}\leq \sup\{g(y)\,\vert\,y<x\}\leq g(x),
         \]
+        where the first inequality comes from the fact that
+        $L_{<x}\subseteq A$, hence for any $y < x$, we have $f(y)\leq g(y)$.
       \end{itemize}
     \item The ``only if'' part is trivial, since, by definition, an
       embedding is strictly increasing. Let us prove the ``if''
       part. Let $g \colon L \to M$ be a strictly increasing
       function. We are going to define an embedding $f \colon L \to M$
-      be transfinite recursion. We set $f(0)=0$. Now, let $x \in L$
+      be transfinite recursion. We set $f(0)=0$. Now, let $x \in L$,
+      with $x \neq 0$, 
       such that we have define an embedding $f\vert_{L_{<x}} \colon
-      L_{<x} \ to M$, we need to give a rule to define $f(x)$. There
+      L_{<x} \to M$, we need to give a rule to define $f(x)$. There
       are two cases:
       \begin{itemize}
         \item $x$ is a successor, $x=y+1$, then we have to define
@@ -223,12 +227,23 @@ element $x \in T$, the set of immediate successors of $x$ is finite.
   \,\vert\, y \in T\}$ is infinite, then necessarily one of
   the set $\{y \geq
   x' \,\vert\, y \in T\}$ has to be infinite.
-  \item We define $x_0$ to be the root, and if the sequence has be
-    defined up to $x_n$ for some $n \in \N$, we define $x_{n+1}$ to
+  \item Notice that if such a sequence exist, then for every $x_n$,
+    then the set $\{y \geq x_n \,\vert\, y \in T\}$ is infinite. So,
+    we are going to construct by recursion such a sequence with this
+    property. We define $x_0$ to be the root, and if the sequence has be
+    defined up to $x_n$ for some $n \in \N$, (with the property that
+    $\{y \geq x_n \,\vert\, y \in T\}$ is infinite), then we define $x_{n+1}$ to
     be any of its immediate successor whose sets of greater elements
     is infinite. The existence of such an immediate successor follows
-    from   
-\end{enumerate}
+    from the previous question.
+
+    The use of the axiom of (countable) choice here follows from the
+    fact that at each step we have to make a choice, because there can
+    be more than one immediate successor of $x_n$ having the desired
+    property. In particular, we need to make a (countable) infinite
+    number of choices, hence the use of the axiom of choice.
+  \end{enumerate}
+  
 \medskip
 
 \noindent\textbf{Exercise 3.} Let $X$ be an infinite set and let $A
@@ -241,6 +256,25 @@ Show that $\vert \overline{A} \vert = \vert A \vert$.
 
 \medskip
 
+\noindent\textbf{Solution} Obviously, we have $\vert A \vert \leq
+\vert \overline{A} \vert$. For the other inequality, notice that any element of $\overline{A}$
+can be represented as a finite sequence $(f_1,f_2,\dots,f_n)$ of
+elements of $A$. Hence, we have
+\[
+  \vert \overline{A} \vert \leq \sum_{n > 0}\vert A\vert^n.
+\]
+Because, $A$ is infinite we have $\vert A\vert ^n=\vert A\vert$ for any $n> 0$, and thus
+\[
+  \sum_{n > 0}\vert A\vert^n=\sum_{n > 0}\vert A \vert = \omega \times
+  \vert A \vert \leq \vert A \vert \times \vert A \vert = \vert A \vert,
+\]
+where the last inequality and last equality both comes from the fact
+that $A$ is infinite. Hence, we have $\vert \overline{A}\vert \leq
+\vert A \vert$. By Cantor-Schröder-Bernstein, we conclude that $\vert
+A \vert = \vert \overline{A} \vert$.
+
+\medskip
+
 \noindent\textbf{Exercise 4.} Consider the language $L=\{f\}$, with $f$
 is a unary function symbol, and the $L$-structure $R$, whose
 underlying set is $\R$, and $f^R(x)=x^2$.
@@ -250,23 +284,29 @@ underlying set is $\R$, and $f^R(x)=x^2$.
   variable such that the set of elements of $R$ for which the formula
   holds is $\{-1\}$ (resp.\ $\{0\}$, resp.\ $\{1\}$). 
 \item (5 points) Find an $L$-formula $\phi(x)$ such that the subset of $x \in
-  R$ that satisfies $\phi(x)$ is the subset $\{x \in \R \,\vert\, x> 0\}$.
+  R$ for which $\phi(x)$ holds is the subset $\{x \in \R \,\vert\, x> 0\}$.
 \end{enumerate}
-
-% \noindent\textbf{Exercise 4.} For each of the following set,
-% determine if they are finite, infinite countable or
-% uncountable. Justify your answers.
-% \[
-%   \begin{aligned}
-%    \text{(4 points)}\quad A&=\{f \colon \N \to \N \,\vert\, f(n)=f(n+1)+f(n+2)\}\\
-%     \text{(3 points)}\quad B&=\{f \colon \N \to \N \,\vert\, f(n)^2-3f(n)+2=0\}\\
-%     \text{(3 points)}\quad C&=\{f \colon \N \to \N \,\vert\, f(n)\geq f(n+1)\}
-                                %   \end{aligned}
-                                %                                 \]
-
 
 \medskip
 
+\noindent\textbf{Solution}
+\begin{enumerate}
+\item We can use the formulas
+  \[
+    \begin{aligned}
+    \phi_{-1}(x)&\equiv& \left(f(f(x))=f(x)\right)\wedge \neg\left(f(x)= x\right),\\
+    \phi_{0}(x)&\equiv& \forall y\left((f(y)=x)\leftrightarrow (y=x)\right),\\
+    \phi_{1}(x)&\equiv& \left((\phi(x)=x) \wedge \neg
+                        \phi_0(x)\right).
+    \end{aligned}
+  \]
+
+\item We can use the formula
+  \[
+    \phi_{>0}(x)\equiv \exists y \left((f(x)=y)\wedge \neg \phi_{0}(y)\right).
+  \]
+\end{enumerate}
+  
 \noindent\textbf{Exercise 5.} Let $(X,\leq)$ be a poset. The goal of
 the exercise is to prove that there always exists a linear order $\preceq$ on
 $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
@@ -275,6 +315,58 @@ $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
 \item (6 points) Prove the general case using the compactness theorem.
 \end{enumerate}
 
+\medskip
+
+\noindent\textbf{Solution}
+\begin{enumerate}
+  \item We proceed by induction on the cardinality $n$ of $X$. If
+    $n=0$, then the assertion is trivial. Suppose proven the statement
+    for $n\geq 0$ and let $X$ be of cardinality $n+1$. Pick any $x \in X$.
+    By hypothesis there exists a linear order $\preceq$ on $X-\{x\}$ 
+    which extends $\leq$. Without loss of generality, we can denote
+    the elements of $X-\{x\}$ by $x_1,x_2,\dots, x_n$ according to the
+    linear order, i.e.\ with
+    \[
+      x_1 \prec x_2 \prec \dots \prec x_n.
+    \]
+    Now consider the set $A=\{y \in X-\{x\} \,\vert\,y\nless x \}$. We
+    have $A
+    \subseteq X-\{x\}$. If $A$ is empty, this means that for
+    every element $y \neq x$ of $X$, either $y < x$, or $y$ and $x$
+    are not comparable (i.e. neither $x >y$, nor $x < y$). In particular,
+    we extend $\preceq$ from $X-\{x\}$ to $X$ by asserting that $x$ is
+    the greatest element of $X$ for $\preceq$.
+    It is straightforward to see that $\preceq$ on $X$ extends $\leq$.
+
+    If $A$ is not empty, then it has a lowest element $x_k$. If $k=0$,
+    then we extend $\preceq$ from $X-\{x\}$ to $X$ by asserting that $x$ is the least
+    element of $X$ for $\preceq$, otherwise, we just ``insert'' $x$
+    between $x_{k-1}$ and $x_{k}$:
+    \[
+      x_{k-1} \prec x \prec x_{k}.
+    \]
+    It is then straightforward to check that $\preceq$ extends $\leq$
+    on $X$.
+  \item Consider the language $L_{X}$ which has one binary relation
+    symbol $\preceq$ and a constant $c_{x}$ for every $x \in X$, and
+    consider the theory $T_{X}$ which contains the theory of
+    posets $T_{\mathrm{poset}}$ as well as the set of axioms
+    \[
+      \{c_x \prec c_y \,\vert\, \text{ for all }x< y \in X\}.
+    \]
+    If we can prove that $T_{X}$ has a model $M$, then the function $X
+    \to M, x \mapsto c_x$ is strictly increasing and taking the
+    order on $X$ induced by that of $M$ proves exactly what we
+    want. By the compactness theorem, to prove that such a model
+    exists, it suffices to prove that every finite subtheory $T'
+    \subseteq T_{X}$ has a model. But for any such theory we have
+    \[
+      T' \subset T_{\mathrm{poset}}\cup \{c_x \prec c_y \,\vert\,
+      \text{ for a finite set of }x<y \text{ in } X\}.
+    \]
+    The answer to question 1 proves in particular that the theory on
+    the right has a model, q.e.d.
+\end{enumerate}
 \end{document}
 
 %%% Local Variables:
