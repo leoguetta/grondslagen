@@ -110,7 +110,7 @@ that:
 \item for every
   $x \in T$, the set $\{y \in T\,\vert\, y \leq x\}$ is well-ordered.
 \end{enumerate}
-Given an element $x \in T$, an \emph{immediate successor} of $T$ is an
+Given an element $x \in T$, an \emph{immediate successor} of $x$ is an
 element $y$ such that $x < y$ and there is no $z$ such that $x < z <
 y$.
 We say that a tree is \emph{infinite} if the underlying set is
@@ -129,30 +129,42 @@ element $x \in T$, the set of immediate successors of $x$ is finite.
   \]
   You have to make explicit where you use the axiom of choice in your answer.
 \end{enumerate}
-\noindent\textbf{Exercise 3.} Consider the language $L=\{f\}$, with $f$
+
+\medskip
+
+\noindent\textbf{Exercise 3.} Let $X$ be an \emph{infinite} set and let $A
+\subseteq X^X$ an infinite set of functions $X \to X$. Let
+$\overline{A}$ be the smallest subset of $X^X$ such that: $A \subseteq
+\overline{A}$ and $\overline{A}$ is closed under composition, i.e. if
+$f,g \in \overline{A}$.
+
+Show that $\vert \overline{A} \vert = \vert A \vert$.
+
+\medskip
+
+\noindent\textbf{Exercise 4.} Consider the language $L=\{f\}$, with $f$
 is a unary function symbol, and the $L$-structure $R$, whose
 underlying set is $\R$, and $f^R(x)=x^2$.
 \begin{enumerate}
 \item (5 points) Using $L$-formulas, define in $R$ the
-  numbers $-1, 0$ and $1$. That is, give an $L$-formula with one free
+  numbers $-1, 0$ and $1$. That is, give $L$-formulas with one free
   variable such that the set of elements of $R$ for which the formula
   holds is $\{-1\}$ (resp.\ $\{0\}$, resp.\ $\{1\}$). 
 \item (5 points) Find an $L$-formula $\phi(x)$ such that the subset of $x \in
   R$ that satisfies $\phi(x)$ is the subset $\{x \in \R \,\vert\, x> 0\}$.
 \end{enumerate}
 
-\medskip
+% \noindent\textbf{Exercise 4.} For each of the following set,
+% determine if they are finite, infinite countable or
+% uncountable. Justify your answers.
+% \[
+%   \begin{aligned}
+%    \text{(4 points)}\quad A&=\{f \colon \N \to \N \,\vert\, f(n)=f(n+1)+f(n+2)\}\\
+%     \text{(3 points)}\quad B&=\{f \colon \N \to \N \,\vert\, f(n)^2-3f(n)+2=0\}\\
+%     \text{(3 points)}\quad C&=\{f \colon \N \to \N \,\vert\, f(n)\geq f(n+1)\}
+                                %   \end{aligned}
+                                %                                 \]
 
-\noindent\textbf{Exercise 4.} For each of the following set,
-determine if they are finite, infinite countable or
-uncountable. Justify your answers.
-\[
-  \begin{aligned}
-   \text{(4 points)}\quad A&=\{f \colon \N \to \N \,\vert\, f(n)=f(n+1)+f(n+2)\}\\
-    \text{(3 points)}\quad B&=\{f \colon \N \to \N \,\vert\, f(n)^2-3f(n)+2=0\}\\
-    \text{(3 points)}\quad C&=\{f \colon \N \to \N \,\vert\, f(n)\geq f(n+1)\}
-  \end{aligned}
-\]
 
 \medskip
 
@@ -163,18 +175,8 @@ $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
 \item (4 points) Prove the statement in the case that $X$ is finite.
 \item (6 points) Prove the general case using the compactness theorem.
 \end{enumerate}
-% \noindent\textbf{Exercise 5.} We consider the language $L_{\R}$ of
-% $\R$-vector spaces: it has one constant $0$, a binary function symbol $+$ for
-% the addition of vectors, and for each $r\in \R$, a unary function symbol
-% $f_r$ for the multiplication of a vector with the scalar $r$. We
-% consider also the theory $T_{\R}$ of $\R$-vector spaces, given by the
-% axioms
-% \[
-  
-% \]
-% Prove with the help of the compactness theorem that there is no
-% $L_{\R}$-formula $\phi(x,y)$ with two free varibales $x$ and $y$, that
-% expresses that $x$ and $y$ are linearly independant (problem)
+
+
 \end{document}
 
 %%% Local Variables:
