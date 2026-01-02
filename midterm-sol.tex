@@ -227,7 +227,11 @@ element $x \in T$, the set of immediate successors of $x$ is finite.
   \,\vert\, y \in T\}$ is infinite, then necessarily one of
   the set $\{y \geq
   x' \,\vert\, y \in T\}$ has to be infinite.
-  \item Notice that if such a sequence exist, then for every $x_n$,
+\item Let me give two possible solutions.
+  \begin{itemize}
+    \item A slightly
+    informal one:
+    Notice that if such a sequence exist, then for every $x_n$,
     then the set $\{y \geq x_n \,\vert\, y \in T\}$ is infinite. So,
     we are going to construct by recursion such a sequence with this
     property. We define $x_0$ to be the root, and if the sequence has be
@@ -242,6 +246,56 @@ element $x \in T$, the set of immediate successors of $x$ is finite.
     be more than one immediate successor of $x_n$ having the desired
     property. In particular, we need to make a (countable) infinite
     number of choices, hence the use of the axiom of choice.
+  \item A formal one using (AC): Let $A$ be the set of finite
+    sequences $x_0 < x_1<\dots < x_n$ such that each $x_i \in T$ is such
+    that the set $\{y \in T\,\vert\,y \geq x_i\}$ is infinite, and let
+    $B=A\cup \{\ast\}$, where $\{\ast\}$ is disjoint from $A$. Let $f
+    \colon A \to B$ be the function such that $f(x_0)=\ast$ and
+    $f(x_0 <\dots < x_n)=(x_0< \dots <x_{n-1})$ for $n\geq 1$. By the
+    previous question, the function $f$ is surjective. Hence, by the axiom
+    of choice, it admits a section $s \colon B \to A$. For the sake of
+    formality, let $h \colon A \to T$ be the function that ``picks the
+    last element'', i.e.\ $h(x_0 <\dots <
+    x_n)=x_n$. Then, we can
+    define by recursion a sequence
+    \[x_0 < x_1  < x_2  < \dots \]
+    as $x_0=r$ the root, and $x_{n+1}=h(s(x_0 <\dots <
+    x_n))$.
+  % \item A formal one using Zorn's lemma: Let $S$ the subset of $T$ of
+  %   these elements $x$ such that the set $\{y \in T\,\vert\,y \geq
+  %   x\}$ is infinite, and let $X$ be the set of chains of $S$ ordered
+  %   by inclusion. Let us show that we can apply Zorn's lemma on
+  %   $X$. Clearly $X$ is non-empty. Now, let $C$ be a non-empty chain
+  %   of $X$ (that is a chain of chains of $S$, ordered by
+  %   inclusion!). Then consider $\bigcup C$, which is the subset of $S$
+  %   of all these elements that are in one of the elements of $C$. Let
+  %   us show that this subset, equipped with the order induced by $T$,
+  %   is a chain, i.e.\ that it is linearly ordered. Let $x_0,x_1 \in C$. By
+  %   definition, this means that there are two chains $C_0,C_1 \in C$
+  %   such that $x_0 \in C_0$ and $x_1 \in C_1$. Because, $C$ is
+  %   linearly ordered, we have either $C_0 \subset C_1$ or $C_1 \subset
+  %   C_0$. Without loss of generality, let us suppose that we are in
+  %   the first case. In particular, this means that $x_0 \in C_1$ as
+  %   well. Because $C_1$ is a chain of $S$, we either have $x_0 \leq
+  %   x_1$ or $x_1 \leq x_0$, which is exactly what we wanted to
+  %   show. In particular, $\bigcup C$ is a upper bound of $C$ in
+  %   $X$. Hence, by Zorn's lemma, we know that that the set $X$ admets
+  %   a maximal element. Let $A$ be such a maximal element. By
+  %   definition, it is a chain of $S$ (and hence of $T$). Notice that
+  %   $A$ is necessarily infinite, otherwise it would have a greatest
+  %   element $x$, and because $\{y \in T\,\vert\,y \geq
+  %   x\}$ is infinite, we could extend this chain by adding another
+  %   element greater than $x$, which would contradict the maximality of
+  %   $A$.
+
+  %   All in all, we get an infinite chain of $S$ (and thus of
+  %   $T$). This contains an infinite countable subset (which is also a
+  %   chain), hence a sequence
+  %   \[
+  %     x_0 < x_1 < \dots
+  %   \]
+  %   of $T$.
+  \end{itemize}
   \end{enumerate}
   
 \medskip
@@ -331,14 +385,18 @@ $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
     \]
     Now consider the set $A=\{y \in X-\{x\} \,\vert\,y\nless x \}$. We
     have $A
-    \subseteq X-\{x\}$. If $A$ is empty, this means that for
-    every element $y \neq x$ of $X$, either $y < x$, or $y$ and $x$
-    are not comparable (i.e. neither $x >y$, nor $x < y$). In particular,
+    \subseteq X-\{x\}$. Note that $y \in A$ means that either $y > x$
+    or $x$ and $y$ are not comparable (neither $y >x$ nor $x <y$).
+
+    If $A$ is empty, this means that for
+    every element $y \neq x$ of $X$, we have $y < x$. In particular,
     we extend $\preceq$ from $X-\{x\}$ to $X$ by asserting that $x$ is
     the greatest element of $X$ for $\preceq$.
-    It is straightforward to see that $\preceq$ on $X$ extends $\leq$.
+    It is straightforward to see that $\preceq$ on $X$ extends $\leq$,
+    and clearly $\preceq$ is linear.
 
-    If $A$ is not empty, then it has a lowest element $x_k$. If $k=0$,
+    If $A$ is not empty, then it has a lowest element $x_k$ (for
+    $\preceq$). If $k=0$,
     then we extend $\preceq$ from $X-\{x\}$ to $X$ by asserting that $x$ is the least
     element of $X$ for $\preceq$, otherwise, we just ``insert'' $x$
     between $x_{k-1}$ and $x_{k}$:
@@ -346,23 +404,31 @@ $X$ that extends $\leq$ (i.e.\ $x \leq y$ implies $x\preceq y$).
       x_{k-1} \prec x \prec x_{k}.
     \]
     It is then straightforward to check that $\preceq$ extends $\leq$
-    on $X$.
+    on $X$. Let us prove that it is linear. We only need to prove that
+    $x$ and any $y \neq x$ are always comparable for $\preceq$. If
+    they were already comparable for $\leq$, then there is nothing to
+    prove. If not, then it means that $y \in A$. Since $x$ is
+    (strictly) smaller
+    for $\preceq$ than the least element of $A$, then necessarily $x
+    \prec y$. 
   \item Consider the language $L_{X}$ which has one binary relation
     symbol $\preceq$ and a constant $c_{x}$ for every $x \in X$, and
     consider the theory $T_{X}$ which contains the theory of
     linearly ordered sets $T_{\mathrm{lin}}$ as well as the set of axioms
     \[
-      \{c_x \prec c_y \,\vert\, \text{ for all }x< y \in X\}.
+      \{c_x \preceq c_y \,\vert\, \text{ for all }x \leq y \in X\}\cup
+      \{\neg(c_x=c_y)\,\vert\, \text{ for all }x \neq y \in X\}.
     \]
     If we can prove that $T_{X}$ has a model $M$, then the function $X
-    \to M, x \mapsto c_x$ is strictly increasing and taking the
+    \to M, x \mapsto c_x$ is injective and increasing. Hence, taking the
     order on $X$ induced by that of $M$ proves exactly what we
     want. By the compactness theorem, to prove that such a model
     exists, it suffices to prove that every finite subtheory $T'
     \subseteq T_{X}$ has a model. But for any such theory we have
     \[
-      T' \subset T_{\mathrm{lin}}\cup \{c_x \prec c_y \,\vert\,
-      \text{ for a finite set of }x<y \text{ in } X\}.
+      T' \subseteq T_{\mathrm{lin}}\cup \{c_x \preceq c_y \,\vert\,
+      \text{ for a finite set of }x\leq y \text{ in } X\}\cup
+      \{\neg(c_x=c_y)\,\vert\, \text{ for a finite set }x \neq y \in X\}.
     \]
     The answer to question 1 proves in particular that the theory on
     the right has a model, q.e.d.
